@@ -11,10 +11,7 @@ async function getInputData() {
 
   if (!inputData) {
     try {
-      let response = await fetch(
-        `https://adventofcode.com/2022/day/${day}/input`
-      );
-      inputData = await response.json();
+      inputData = await fetch(`https://adventofcode.com/2022/day/${day}/input`);
       localStorage.setItem('aoc-data-day-' + day, inputData);
       console.log('inputData (fresh): ', inputData);
     } catch (error) {
