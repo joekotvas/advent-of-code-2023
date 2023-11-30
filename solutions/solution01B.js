@@ -1,7 +1,27 @@
 import data from '../data/data01.js';
 
-function solution(input = data) {
+const day = 1;
+
+async function getData() {
+  const localData = localStorage.getItem('aoc-data-day-' + day);
+  console.log('localData: ', localData);
+
+  if (!localData) {
+    let response = await fetch(
+      `https://adventofcode.com/2022/day/${day}/input`
+    );
+    let input = await response.json();
+    localStorage.setItem('aoc-data-day-' + day);
+  }
+
+  console.log('localData: ', localStorage.getItem('aoc-data-day-' + day));
+}
+
+async function solution() {
   //  console.log('input: ', input);
+
+  input = await getData();
+
   const elfValues = input.split('\n\n');
 
   const elfTotals = elfValues
@@ -11,11 +31,9 @@ function solution(input = data) {
 
   const topThree = elfTotals.reduce((sum, current) => +current + +sum);
 
-  console.log('topThree: ', topThree);
-
-  return topThree;
+  return input;
 }
 
-solution();
+solution().then(input => console.log(input));
 
 export default solution;
