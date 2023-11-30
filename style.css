@@ -1,0 +1,260 @@
+html {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: white;
+  background:
+    url('/top-background.svg') no-repeat top center,
+    url('/bottom-background.svg') no-repeat bottom center,
+    linear-gradient(to bottom, #eee5ce, #f4f1ec);
+  background-size:
+    100vw auto,
+    100vw auto,
+    auto;
+  color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+}
+
+main {
+  margin: auto;
+  text-align: center;
+  padding: 8vw 2rem 12vw;
+}
+
+h1 {
+  line-height: 1;
+  margin-bottom: 3rem;
+}
+
+h1 strong {
+  display: block;
+  color: rgb(200, 0, 0);
+  background: linear-gradient(to bottom, rgb(220, 0, 0), rgb(157, 0, 0));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #fff;
+  -webkit-text-stroke: 0.1rem white;
+  font-size: 10rem;
+  font-weight: 900;
+  position: relative;
+  text-align: left;
+  width: fit-content;
+  margin: auto;
+}
+
+h1 strong:before {
+  content: ' ';
+  background: url(/santa-hat.svg) no-repeat center center / contain;
+  width: 8rem;
+  height: 8rem;
+  position: absolute;
+  top: -2rem;
+  left: -1.7rem;
+}
+
+h1 .line-2 {
+  height: 100%;
+  width: 100%;
+  letter-spacing: -0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 .line-2 span {
+  display: block;
+  background: linear-gradient(
+    to bottom,
+    #cfc09f 20%,
+    #b2943e 24%,
+    #f9da71 26%,
+    #cfc09f 27%,
+    #ffecb3 40%,
+    #b2943e 78%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  position: relative;
+  text-transform: uppercase;
+  font-size: 8rem;
+  margin: 0;
+  font-weight: 400;
+}
+
+h1 .line-2 span:after {
+  background: none;
+  content: attr(data-heading);
+  left: 0;
+  top: 0;
+  z-index: -1;
+  position: absolute;
+  text-shadow:
+    -1px 0 1px #c6bb9f,
+    0 1px 1px #c6bb9f,
+    1px 1px 1px rgba(0, 0, 0, 0.4),
+    -1px -1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.divider-leafy-detail {
+  display: block;
+  margin: 3rem auto;
+  width: 8rem;
+}
+
+.solutions {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  max-width: 65rem;
+  justify-content: center;
+}
+
+.present {
+  width: 8rem;
+  aspect-ratio: 1;
+  transform: rotate(-1deg);
+  transition: 0.3s;
+  position: relative;
+}
+
+.present-container:nth-child(2n) .present {
+  transform: rotate(4deg);
+}
+
+.present .face {
+  font-family: 'Times New Roman', Times, serif;
+  color: white;
+  outline: dotted 0.25rem darkgreen;
+  border-radius: 0.5rem;
+  background-color: red;
+  perspective: 150rem;
+  background: linear-gradient(to bottom, rgb(220, 0, 0), rgb(157, 0, 0));
+  top: 0;
+  left: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+}
+
+.present-container:nth-child(3n) .present .face {
+  background-color: green;
+  background: linear-gradient(to bottom, rgb(0, 130, 0), #006400);
+}
+
+.present .wrapping {
+  font-size: 4rem;
+  transform: rotateY(0deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.present-container:hover .present .wrapping {
+  transform: rotateY(180deg);
+}
+
+.present .contents {
+  transform: rotateY(-180deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.present-container:hover .present .contents,
+.present:focus-within .contents {
+  transform: rotateY(0deg);
+}
+
+.solutions h3 {
+  font-size: 1.7rem;
+  padding: 0 0 1rem;
+  margin: 0;
+}
+
+.solutions a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.solutions h4 {
+  font-size: 1.2rem;
+  display: inline;
+}
+
+.solution-links {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.solution-links a {
+  border-radius: 9999px;
+  border: solid 1px;
+  display: block;
+  width: 2rem;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+dialog {
+  background-color: rgba(255, 255, 255, 0.97);
+  border: solid 0.25rem darkgreen;
+  border-radius: 0.5rem;
+  padding: 2.5rem;
+  margin: auto;
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 80%;
+}
+
+dialog .close {
+  float: right;
+}
+
+.solutions dialog h3 {
+  margin-top: 1rem;
+}
+
+.answer {
+  display: block;
+  border-top: solid 2px;
+  border-bottom: solid 2px;
+  width: 80%;
+  margin: 2rem auto 3rem;
+  padding: 0.5rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(0, 0, 157);
+  text-align: center;
+}
+
+dialog pre {
+  max-height: 20rem;
+  overflow: auto;
+  font-size: 1.1rem;
+}
+
+.copyright {
+  margin-top: 5rem;
+  color: #555;
+}
+
+.copyright a {
+  color: rgb(0, 100, 0);
+}
