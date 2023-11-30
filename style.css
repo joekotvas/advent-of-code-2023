@@ -14,7 +14,7 @@ body {
     100vw auto,
     auto;
   color: #333;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Calibri, Arial, Helvetica, sans-serif;
   padding: 0;
   margin: 0;
   display: flex;
@@ -46,6 +46,7 @@ h1 strong {
   font-weight: 900;
   position: relative;
   text-align: left;
+  width: 29.5rem;
   width: fit-content;
   margin: auto;
 }
@@ -219,7 +220,7 @@ dialog {
   padding: 2.5rem;
   margin: auto;
   text-align: left;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Calibri, Arial, Helvetica, sans-serif;
   max-width: 80%;
 }
 
@@ -253,8 +254,90 @@ dialog pre {
 .copyright {
   margin-top: 5rem;
   color: #555;
+  letter-spacing: 0.05rem;
+  margin-bottom: 1rem;
 }
 
 .copyright a {
   color: rgb(0, 100, 0);
+}
+
+@media screen and (max-width: 600px) {
+  h1 strong {
+    font-size: 6rem;
+  }
+
+  h1 .line-2 span {
+    font-size: 4rem;
+  }
+
+  .solutions {
+    max-width: 100%;
+  }
+
+  .present {
+    width: 6rem;
+  }
+
+  .present .face {
+    font-size: 2rem;
+  }
+
+  .present .wrapping {
+    font-size: 2rem;
+  }
+
+  .solutions h3 {
+    font-size: 1.2rem;
+  }
+
+  .solutions h4 {
+    font-size: 1rem;
+  }
+
+  .solution-links {
+    font-size: 1rem;
+  }
+
+  .answer {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  h1 strong {
+    font-size: 8rem;
+  }
+
+  h1 .line-2 span {
+    font-size: 6rem;
+  }
+
+  .present {
+    width: 8rem;
+  }
+
+  .present .face {
+    font-size: 3rem;
+  }
+
+  .present .wrapping {
+    font-size: 3rem;
+  }
+
+  .solutions h3 {
+    font-size: 1.5rem;
+  }
+
+  .solutions h4 {
+    font-size: 1.2rem;
+  }
+
+  .solution-links {
+    font-size: 1.2rem;
+  }
+
+  .answer {
+    font-size: 2rem;
+  }
 }

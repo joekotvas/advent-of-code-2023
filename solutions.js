@@ -5,11 +5,13 @@ window.showModal = function (event) {
   const id = event.target.dataset.key
     ? event.target.dataset.key
     : event.target.parentNode.dataset.key;
-  document.querySelector(`.solution-${id}-a dialog`).showModal();
+  document.querySelector(`.solution-${id} dialog`).showModal();
 };
 
+const progress = 2;
+
 const solutionTemplate = key => {
-  if (!solutions[key].A() && !solutions[key].B()) return 'Coming soon!';
+  if (key > progress) return 'Coming soon!';
   return `
     <h3>
     <a href="https://adventofcode.com/2022/day/${key}">
@@ -18,7 +20,7 @@ const solutionTemplate = key => {
     </h3>
     <div class="solution-links">
     <div class="solution-${key}-a">
-    <a class="show" data-key="${key}" onclick="showModal(event)" href="#">
+    <a class="show" data-key="${key}-a" onclick="showModal(event)" href="#">
         1
     </a>
     <dialog>
@@ -34,20 +36,24 @@ const solutionTemplate = key => {
     </dialog>
     </div>
     <div class="solution-${key}-b">
-    <a class="show" data-key="${key}" onclick="showModal(event)" href="#">
+    <a class="show" data-key="${key}-b" onclick="showModal(event)" href="#">
         2
     </a>
     <dialog>
         <button class="close" onclick="document.querySelector('.solution-${key}-b dialog').close();">
         x
         </button>
-        <pre><code>${solutions[key].B}</code></pre>
+        <div>
+            <h3>Answer:</h4>
+            <span class="answer">${solutions[key].B()}</span>
+            <h3>Solution Code:</h4>
+            <pre><code>${solutions[key].B}</code></pre>
+        </div>
     </dialog>
     </div></div>`;
 };
 
 const output = Object.keys(solutions).map(key => {
-  console.log('key', key);
   return `
     <div class="present-container">
         <div class="present">
