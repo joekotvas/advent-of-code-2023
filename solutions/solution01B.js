@@ -1,26 +1,29 @@
-import data from '../data/data01.js';
-
 const day = 1;
 
-async function getData() {
-  const localData = localStorage.getItem('aoc-data-day-' + day);
-  console.log('localData: ', localData);
+async function getInputData() {
+  let inputData = localStorage.getItem('aoc-data-day-' + day);
 
-  if (!localData) {
+  if (inputData) {
+    console.log('inputData (cached): ', inputData);
+  }
+
+  if (!inputData) {
     let response = await fetch(
       `https://adventofcode.com/2022/day/${day}/input`
     );
-    let input = await response.json();
-    localStorage.setItem('aoc-data-day-' + day);
+    let inputData = await response.json();
+    localStorage.setItem('aoc-data-day-' + day, inputData);
+
+    console.log('inputData (fresh): ', inputData);
   }
 
-  console.log('localData: ', localStorage.getItem('aoc-data-day-' + day));
+  return inputData;
 }
 
 async function solution() {
   //  console.log('input: ', input);
 
-  input = await getData();
+  input = await getInputData();
 
   const elfValues = input.split('\n\n');
 
