@@ -1,5 +1,7 @@
 const day = 1;
 
+localStorage.removeItem('aoc-data-day-' + day);
+
 async function getInputData() {
   let inputData = localStorage.getItem('aoc-data-day-' + day);
 
@@ -8,23 +10,35 @@ async function getInputData() {
   }
 
   if (!inputData) {
-    let response = await fetch(
-      `https://adventofcode.com/2022/day/${day}/input`
-    );
-    let inputData = await response.json();
-    localStorage.setItem('aoc-data-day-' + day, inputData);
-
-    console.log('inputData (fresh): ', inputData);
+    try {
+      let response = await fetch(
+        `https://adventofcode.com/2022/day/${day}/input`
+      );
+      inputData = await response.json();
+      localStorage.setItem('aoc-data-day-' + day, inputData);
+      console.log('inputData (fresh): ', inputData);
+    } catch (error) {
+      inputData = `11334
+      6264
+      9318`;
+      console.error('Could not fetch data:\n', error);
+    }
   }
+
+  console.log('inputData', inputData);
 
   return inputData;
 }
 
-async function solution() {
-  //  console.log('input: ', input);
-
+async function runSolution() {
+  let input = '';
+  let solution = null;
   input = await getInputData();
+  solution = solve(input);
+  return solution;
+}
 
+function solve(input) {
   const elfValues = input.split('\n\n');
 
   const elfTotals = elfValues
@@ -34,9 +48,9 @@ async function solution() {
 
   const topThree = elfTotals.reduce((sum, current) => +current + +sum);
 
-  return input;
+  return topThree;
 }
 
-solution().then(input => console.log(input));
+runSolution().then(solution => console.log(solution));
 
-export default solution;
+export default runSolution;
